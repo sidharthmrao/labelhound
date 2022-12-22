@@ -1,3 +1,6 @@
+"""
+Train a new sentiment classifier using a set of training data.
+"""
 import pandas as pd
 from tqdm import tqdm
 import numpy as np
@@ -7,6 +10,7 @@ from sklearn.model_selection import train_test_split
 import tensorflow_hub as hub
 import tensorflow_text
 from tensorflow import keras
+from utils import dataframe_to_excel
 
 
 use = hub.load("https://tfhub.dev/google/universal-sentence-encoder-multilingual-large/3")
@@ -15,6 +19,7 @@ use = hub.load("https://tfhub.dev/google/universal-sentence-encoder-multilingual
 ratio_to_train = .3
 data_path = 'training_data/data.csv'
 test_set_size = .25
+model_path = "models/sentiment_classifier"
 
 data = pd.read_csv(data_path, encoding='latin-1')
 
@@ -93,3 +98,5 @@ history = model.fit(
 
 # Evaluate model
 model.evaluate(X_test, y_test)
+
+dataframe_to_excel(model, model_path)

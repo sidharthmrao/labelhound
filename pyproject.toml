@@ -16,6 +16,9 @@ tensorflow-hub = "^0.12.0"
 tensorflow-text = "^2.11.0"
 ipywidgets = "^8.0.3"
 jupyter = "^1.0.0"
+openpyxl = "^3.0.10"
+tweepy = "^4.12.1"
+gensim = "^4.3.0"
 
 [tool.poetry.dev-dependencies]
 
